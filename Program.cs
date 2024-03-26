@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using COVID_19_Hadasim_.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<COVID_19_Hadasim_Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("COVID_19_Hadasim_Context") ?? throw new InvalidOperationException("Connection string 'COVID_19_Hadasim_Context' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -1,0 +1,115 @@
+﻿@model COVID_19_Hadasim_.Models.Member
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<h4>Member</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MemberFirstName" class="control-label"></label>
+                <input asp-for="MemberFirstName" class="form-control" />
+                <span asp-validation-for="MemberFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MemberLastName" class="control-label"></label>
+                <input asp-for="MemberLastName" class="form-control" />
+                <span asp-validation-for="MemberLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MemberId" class="control-label"></label>
+                <input asp-for="MemberId" class="form-control"  />
+                <span asp-validation-for="MemberId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MemberAddress" class="control-label"></label>
+                <input asp-for="MemberAddress" class="form-control" />
+                <span asp-validation-for="MemberAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MemberCity" class="control-label"></label>
+                <input asp-for="MemberCity" class="form-control" />
+                <span asp-validation-for="MemberCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HouseNumber" class="control-label"></label>
+                <input asp-for="HouseNumber" class="form-control" />
+                <span asp-validation-for="HouseNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MemberPhone" class="control-label"></label>
+                <input asp-for="MemberPhone" class="form-control" />
+                <span asp-validation-for="MemberPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MemberMobilePhone" class="control-label"></label>
+                <input asp-for="MemberMobilePhone" class="form-control" />
+                <span asp-validation-for="MemberMobilePhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MemberImage" class="control-label"></label>
+                <input asp-for="MemberImage" class="form-control" />
+                <span asp-validation-for="MemberImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PositiveRes" class="control-label"></label>
+                <input asp-for="PositiveRes" class="form-control" />
+                <span asp-validation-for="PositiveRes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecoveryDate" class="control-label"></label>
+                <input asp-for="RecoveryDate" class="form-control" />
+                <span asp-validation-for="RecoveryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        <div>
+            <button id="addVaccineBtn" class="btn btn-primary">Add Vaccine</button>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        var memberId = "@ViewBag.MemberId";
+        document.getElementById("addVaccineBtn").onclick = function () {
+            window.location.href = "/Vaccines/Create?memberId=" + memberId;
+        };
+    </script>
+}
+
+
