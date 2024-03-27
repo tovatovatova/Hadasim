@@ -42,7 +42,7 @@ namespace COVID_19_Hadasim_.Controllers
                 return NotFound();
             }
             var vaccines = await _context.Vaccine.ToListAsync();
-            vaccines = vaccines.Where(v => v.MemberID == member.MemberId).OrderBy(v => v.VaccineNumber).ToList();
+            vaccines = vaccines.Where(v => v.MemberID == member.Id).OrderBy(v => v.VaccineNumber).ToList();
             ViewBag.vaccines = vaccines;
             return View(member);
         }
@@ -94,8 +94,8 @@ namespace COVID_19_Hadasim_.Controllers
                 .Select(v => v.VaccineNumber)
                 .ToList();
 
-            // Generate the available vaccine numbers within the range 1-4
-            var availableVaccineNumbers = Enumerable.Range(1, 4)
+            // Generate the available vaccine numbers
+            var availableVaccineNumbers = Enumerable.Range(1, 4) // Adjusted range to 1-4
                 .Except(existingVaccineNumbers)
                 .ToList();
 
@@ -104,6 +104,7 @@ namespace COVID_19_Hadasim_.Controllers
 
             return View();
         }
+
 
         // POST: Members/AddVaccine
         [HttpPost]
