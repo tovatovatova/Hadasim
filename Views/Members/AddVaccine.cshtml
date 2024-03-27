@@ -11,11 +11,16 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="AddVaccine">
             <input type="hidden" asp-for="MemberID" value="@ViewBag.MemberId" />
             <div class="form-group">
                 <label asp-for="VaccineNumber" class="control-label"></label>
-                <input asp-for="VaccineNumber" class="form-control" />
+                <select asp-for="VaccineNumber" class="form-control">
+                    @foreach (var vaccineNumber in ViewBag.AvailableVaccineNumbers)
+                    {
+                        <option value="@vaccineNumber">@vaccineNumber</option>
+                    }
+                </select>
                 <span asp-validation-for="VaccineNumber" class="text-danger"></span>
             </div>
             <div class="form-group">

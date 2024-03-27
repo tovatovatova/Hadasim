@@ -6,7 +6,6 @@ namespace COVID_19_Hadasim_.Models
 {
     public class Member
     {
-        [AutoIncrement]
         public int Id { get; set; }
         public string MemberFirstName { get; set; }
         public string MemberLastName { get; set; }

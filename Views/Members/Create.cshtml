@@ -88,28 +88,8 @@
     </div>
 </div>
 
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert alert-success" role="alert">
-        @TempData["SuccessMessage"]
 
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
 
-        <div>
-            <button id="addVaccineBtn" class="btn btn-primary">Add Vaccine</button>
-        </div>
-    </div>
-}
 
-@section Scripts {
-    <script>
-        var memberId = "@ViewBag.MemberId";
-        document.getElementById("addVaccineBtn").onclick = function () {
-            window.location.href = "/Vaccines/Create?memberId=" + memberId;
-        };
-    </script>
-}
 
 

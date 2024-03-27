@@ -5,98 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-4">
+            <a href="@Url.Action("Details", "Members", new { id = item.Id })" class="card-link">
+                <div class="card border-primary">
+                    <img src="@item.MemberImage" alt="Member Image" class="card-img-top" style="max-height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @Html.DisplayFor(modelItem => item.MemberFirstName) @Html.DisplayFor(modelItem => item.MemberLastName) (ID: @Html.DisplayFor(modelItem => item.MemberId))
+                        </h5>
+                        <div class="btn-group" role="group" aria-label="Member Actions">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="@Url.Action("AddVaccine", "Members", new { id = item.Id })" class="btn btn-sm btn-success">Add Vaccine</a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MemberFirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MemberLastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MemberId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MemberAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MemberCity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HouseNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MemberPhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MemberMobilePhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MemberImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PositiveRes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RecoveryDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MemberFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MemberLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MemberId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MemberAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MemberCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HouseNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MemberPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MemberMobilePhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MemberImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PositiveRes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecoveryDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="col-md-3 mb-4">
+        <div class="card border-primary">
+            <div class="card-body text-center">
+                <h5 class="card-title">Create New Member</h5>
+                <p class="card-text">Click the button below to create a new member.</p>
+                <a asp-action="Create" class="btn btn-primary">Create</a>
+            </div>
+        </div>
+    </div>
+</div>

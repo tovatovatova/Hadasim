@@ -5,8 +5,32 @@
       "PackagePath": "staticwebassets\\COVID-19(Hadasim).bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\_bootswatch.scss",
+      "PackagePath": "staticwebassets\\css\\_bootswatch.scss"
+    },
+    {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\bootstrap (1).css",
+      "PackagePath": "staticwebassets\\css\\bootstrap (1).css"
+    },
+    {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\bootstrap.min (1).css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min (1).css"
+    },
+    {
       "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\purple.css",
+      "PackagePath": "staticwebassets\\css\\purple.css"
     },
     {
       "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\site.css",

@@ -23,8 +23,8 @@ namespace COVID_19_Hadasim_.Controllers
         public async Task<IActionResult> Index()
         {
             return _context.Member != null ?
-                          View(await _context.Member.ToListAsync()) :
-                          Problem("Entity set 'COVID_19_Hadasim_Context.Member'  is null.");
+                View(await _context.Member.ToListAsync()) :
+                Problem("Entity set 'COVID_19_Hadasim_Context.Member'  is null.");
         }
 
         // GET: Members/Details/5
@@ -42,7 +42,7 @@ namespace COVID_19_Hadasim_.Controllers
                 return NotFound();
             }
             var vaccines = await _context.Vaccine.ToListAsync();
-            vaccines=vaccines.Where(v=>v.MemberID==member.MemberId).OrderBy(v=>v.VaccineNumber).ToList();
+            vaccines = vaccines.Where(v => v.MemberID == member.MemberId).OrderBy(v => v.VaccineNumber).ToList();
             ViewBag.vaccines = vaccines;
             return View(member);
         }
@@ -50,41 +50,76 @@ namespace COVID_19_Hadasim_.Controllers
         // GET: Members/Create
         public IActionResult Create()
         {
-
             return View();
         }
 
         // POST: Members/Create
-       // POST: Members/Create
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Create([Bind("Id,MemberFirstName,MemberLastName,MemberId,MemberAddress,MemberCity,HouseNumber,BirthDate,MemberPhone,MemberMobilePhone,MemberImage,PositiveRes,RecoveryDate")] Member member)
-{
-    if (ModelState.IsValid)
-    {
-        _context.Add(member);
-        await _context.SaveChangesAsync();
-        TempData["SuccessMessage"] = "Member added successfully.";
-        
-        // Redirect to the AddVaccine action with the memberId
-        return RedirectToAction("AddVaccine", new { memberId = member.MemberId });
-    }
-    return View(member);
-}
-        // GET: Members/AddVaccine
-        public IActionResult AddVaccine(int? memberId)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,MemberFirstName,MemberLastName,MemberId,MemberAddress,MemberCity,HouseNumber,BirthDate,MemberPhone,MemberMobilePhone,MemberImage,PositiveRes,RecoveryDate")] Member member)
         {
-            if (memberId == null)
+            if (ModelState.IsValid)
+            {
+                //Make sure member ID is unique
+                if (_context.Member.Any(m => m.MemberId == member.MemberId))
+                {
+                    ModelState.AddModelError("MemberId", "Member ID already exists.");
+                    return View(member);
+                }
+                // If no image URL inserted, use the default image
+                member.MemberImage=  member.MemberImage!=null?member.MemberImage : "https://acesse.one/0DyVW";
+                _context.Add(member);
+                await _context.SaveChangesAsync();
+
+                // Redirect to the Details action of the member with the memberId
+                return RedirectToAction("Details", new { id = member.Id });
+            }
+            return View(member);
+        }
+
+        // GET: Members/AddVaccine
+        public IActionResult AddVaccine(int? id)
+        {
+            if (id == null)
             {
                 return NotFound();
             }
 
             // Pass the memberId to the view
-            ViewBag.MemberId = memberId;
+            ViewBag.MemberId = id;
+
+            // Get the existing vaccine numbers for the current member by his ID.
+            var existingVaccineNumbers = _context.Vaccine
+                .Where(v => v.MemberID == id)
+                .Select(v => v.VaccineNumber)
+                .ToList();
+
+            // Generate the available vaccine numbers within the range 1-4
+            var availableVaccineNumbers = Enumerable.Range(1, 4)
+                .Except(existingVaccineNumbers)
+                .ToList();
+
+            // Pass the available vaccine numbers to the view
+            ViewBag.AvailableVaccineNumbers = availableVaccineNumbers;
 
             return View();
         }
 
+        // POST: Members/AddVaccine
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddVaccine([Bind("VaccineNumber,VaccineDate,VaccineManufacturer,MemberID")] Vaccine vaccine)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(vaccine);
+                await _context.SaveChangesAsync();
+
+                // Redirect to the Details action of the member with the memberId
+                return RedirectToAction("Details", new { Id = vaccine.MemberID });
+            }
+            return View(vaccine);
+        }
 
         // GET: Members/Edit/5
         public async Task<IActionResult> Edit(int? id)

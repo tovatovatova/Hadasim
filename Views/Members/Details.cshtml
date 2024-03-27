@@ -5,114 +5,74 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Member Details</h1>
 
-<div>
-    <h4>Member</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MemberFirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MemberFirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MemberLastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MemberLastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MemberId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MemberId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MemberAddress)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MemberAddress)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MemberCity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MemberCity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HouseNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HouseNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MemberPhone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MemberPhone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MemberMobilePhone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MemberMobilePhone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MemberImage)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MemberImage)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PositiveRes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PositiveRes)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RecoveryDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RecoveryDate)
-        </dd>
-    </dl>
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="@Url.Content(Model.MemberImage)" class="card-img" alt="Member Image">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Personal Information</h5>
+                <dl class="row">
+                    <dt class="col-sm-3">First Name</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberFirstName)</dd>
+                    <dt class="col-sm-3">Last Name</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberLastName)</dd>
+                    <dt class="col-sm-3">Member ID</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberId)</dd>
+                    <dt class="col-sm-3">Address</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberAddress)</dd>
+                    <dt class="col-sm-3">City</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberCity)</dd>
+                    <dt class="col-sm-3">House Number</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.HouseNumber)</dd>
+                    <dt class="col-sm-3">Birth Date</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.BirthDate)</dd>
+                    <dt class="col-sm-3">Phone</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberPhone)</dd>
+                    <dt class="col-sm-3">Mobile Phone</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberMobilePhone)</dd>
+                    <dt class="col-sm-3">Positive Result</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.PositiveRes)</dd>
+                    <dt class="col-sm-3">Recovery Date</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.RecoveryDate)</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
 </div>
+
 @if (ViewBag.vaccines != null && ViewBag.vaccines.Count > 0)
 {
-    <div>
-        <h4>Vaccines</h4>
-        <hr />
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Vaccine Number</th>
-                    <th>Vaccine Date</th>
-                    <th>Manufacturer</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var vaccine in ViewBag.vaccines)
-                {
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Vaccines</h5>
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>@vaccine.VaccineNumber</td>
-                        <td>@vaccine.VaccineDate.ToShortDateString()</td>
-                        <td>@vaccine.VaccineManufacturer</td>
+                        <th>Vaccine Number</th>
+                        <th>Vaccine Date</th>
+                        <th>Manufacturer</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var vaccine in ViewBag.vaccines)
+                    {
+                        <tr>
+                            <td>@vaccine.VaccineNumber</td>
+                            <td>@vaccine.VaccineDate.ToShortDateString()</td>
+                            <td>@vaccine.VaccineManufacturer</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 }
 
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a>
+    <a href="javascript:history.back()" class="btn btn-secondary">Close</a>
 </div>
