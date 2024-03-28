@@ -19,13 +19,28 @@ namespace COVID_19_Hadasim_.Controllers
             _context = context;
         }
 
+
         // GET: Members
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return _context.Member != null ?
-                View(await _context.Member.ToListAsync()) :
-                Problem("Entity set 'COVID_19_Hadasim_Context.Member'  is null.");
+            // Retrieve all members from the database
+            var members = _context.Member.AsQueryable();
+
+            // Apply search filter if provided
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                // Filter members based on first name, last name, or ID containing the search string
+                members = members.Where(m =>
+                    m.MemberFirstName.Contains(searchString) ||
+                    m.MemberLastName.Contains(searchString) ||
+                    m.MemberId.ToString().Contains(searchString)
+                );
+            }
+            return View(await members.ToListAsync());    // Return the view with the list of members
+
+
         }
+
 
         // GET: Members/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -67,7 +82,7 @@ namespace COVID_19_Hadasim_.Controllers
                     return View(member);
                 }
                 // If no image URL inserted, use the default image
-                member.MemberImage=  member.MemberImage!=null?member.MemberImage : "https://acesse.one/0DyVW";
+                member.MemberImage=  member.MemberImage!=null?member.MemberImage : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrMSwepdxrrvU28_fFcOCKydvBA-c6je-BnQ&usqp=CAU";
                 _context.Add(member);
                 await _context.SaveChangesAsync();
 
@@ -89,6 +104,7 @@ namespace COVID_19_Hadasim_.Controllers
             ViewBag.MemberId = id;
 
             // Get the existing vaccine numbers for the current member by his ID.
+            //Purpose: choose number only from untaken vaccines
             var existingVaccineNumbers = _context.Vaccine
                 .Where(v => v.MemberID == id)
                 .Select(v => v.VaccineNumber)

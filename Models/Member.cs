@@ -9,7 +9,8 @@ namespace COVID_19_Hadasim_.Models
         public int Id { get; set; }
         public string MemberFirstName { get; set; }
         public string MemberLastName { get; set; }
-
+        //Use regular expression to enable only 9 digit number input
+        [RegularExpression(@"^\d{9}$", ErrorMessage = "Member ID must be a 9-digit number.")] 
         public int MemberId { get; set; }
         public string MemberAddress { get; set; }
         public string MemberCity { get; set; }

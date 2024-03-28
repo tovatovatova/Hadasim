@@ -7,72 +7,89 @@
 
 <h1>Member Details</h1>
 
-<div class="card mb-3">
-    <div class="row no-gutters">
-        <div class="col-md-4">
-            <img src="@Url.Content(Model.MemberImage)" class="card-img" alt="Member Image">
-        </div>
-        <div class="col-md-8">
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title">Personal Information</h5>
                 <dl class="row">
                     <dt class="col-sm-3">First Name</dt>
                     <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberFirstName)</dd>
+
                     <dt class="col-sm-3">Last Name</dt>
                     <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberLastName)</dd>
+
                     <dt class="col-sm-3">Member ID</dt>
                     <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberId)</dd>
+
                     <dt class="col-sm-3">Address</dt>
                     <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberAddress)</dd>
+
                     <dt class="col-sm-3">City</dt>
                     <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberCity)</dd>
+
                     <dt class="col-sm-3">House Number</dt>
                     <dd class="col-sm-9">@Html.DisplayFor(model => model.HouseNumber)</dd>
+
                     <dt class="col-sm-3">Birth Date</dt>
                     <dd class="col-sm-9">@Html.DisplayFor(model => model.BirthDate)</dd>
+
                     <dt class="col-sm-3">Phone</dt>
                     <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberPhone)</dd>
+
                     <dt class="col-sm-3">Mobile Phone</dt>
                     <dd class="col-sm-9">@Html.DisplayFor(model => model.MemberMobilePhone)</dd>
+
                     <dt class="col-sm-3">Positive Result</dt>
                     <dd class="col-sm-9">@Html.DisplayFor(model => model.PositiveRes)</dd>
+
                     <dt class="col-sm-3">Recovery Date</dt>
                     <dd class="col-sm-9">@Html.DisplayFor(model => model.RecoveryDate)</dd>
+
                 </dl>
             </div>
         </div>
+        <!-- Add Vaccine button -->
+        <div class="mt-3">
+            <a asp-action="AddVaccine" asp-route-id="@Model?.Id" class="btn btn-info">Add Vaccine</a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        @if (ViewBag.vaccines != null && ViewBag.vaccines.Count > 0)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Vaccines</h5>
+                    <table class="table">
+                        <thead>
+                            <tr class="table-success">
+                                <th>Vaccine Number</th>
+                                <th>Vaccine Date</th>
+                                <th>Manufacturer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var vaccine in ViewBag.vaccines)
+                            {
+                                <tr>
+                                    <td>@vaccine.VaccineNumber</td>
+                                    <td>@vaccine.VaccineDate.ToShortDateString()</td>
+                                    <td>@vaccine.VaccineManufacturer</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
     </div>
 </div>
 
-@if (ViewBag.vaccines != null && ViewBag.vaccines.Count > 0)
-{
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Vaccines</h5>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Vaccine Number</th>
-                        <th>Vaccine Date</th>
-                        <th>Manufacturer</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var vaccine in ViewBag.vaccines)
-                    {
-                        <tr>
-                            <td>@vaccine.VaccineNumber</td>
-                            <td>@vaccine.VaccineDate.ToShortDateString()</td>
-                            <td>@vaccine.VaccineManufacturer</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="mt-3">
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Close</a>
         </div>
     </div>
-}
-
-<div class="mt-3">
-    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a>
-    <a href="javascript:history.back()" class="btn btn-secondary">Close</a>
 </div>

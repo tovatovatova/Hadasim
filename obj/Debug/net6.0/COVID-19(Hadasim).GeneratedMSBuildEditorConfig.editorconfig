@@ -24,6 +24,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/tovar/source/repos/Hadasim/Views/Home/Statistics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdGF0aXN0aWNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tovar/source/repos/Hadasim/Views/Members/AddVaccine.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xBZGRWYWNjaW5lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,10 +54,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/tovar/source/repos/Hadasim/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/tovar/source/repos/Hadasim/Views/Shared/_AddVaccine.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZGRWYWNjaW5lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tovar/source/repos/Hadasim/Views/Shared/_ValidationScriptsPartial.cshtml]

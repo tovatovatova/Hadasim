@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\bootstrap.min (1).css"
     },
     {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\bootstrap.min (2).css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min (2).css"
+    },
+    {
       "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
@@ -29,12 +33,36 @@
       "PackagePath": "staticwebassets\\css\\bootstrap.rtl.min.css"
     },
     {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\flatly.css",
+      "PackagePath": "staticwebassets\\css\\flatly.css"
+    },
+    {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\journal.css",
+      "PackagePath": "staticwebassets\\css\\journal.css"
+    },
+    {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\materia.css",
+      "PackagePath": "staticwebassets\\css\\materia.css"
+    },
+    {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\minty.css",
+      "PackagePath": "staticwebassets\\css\\minty.css"
+    },
+    {
       "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\purple.css",
       "PackagePath": "staticwebassets\\css\\purple.css"
     },
     {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\searchbar.css",
+      "PackagePath": "staticwebassets\\css\\searchbar.css"
+    },
+    {
       "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\css\\united.css",
+      "PackagePath": "staticwebassets\\css\\united.css"
     },
     {
       "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\favicon.ico",
@@ -175,6 +203,10 @@
     {
       "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\lib\\bootstrap\\dist\\css\\minty.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\minty.css"
     },
     {
       "Id": "C:\\Users\\tovar\\source\\repos\\Hadasim\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
